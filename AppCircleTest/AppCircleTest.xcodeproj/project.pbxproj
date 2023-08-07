@@ -11,6 +11,7 @@
 		098341192A80F051002BC610 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098341182A80F051002BC610 /* ContentView.swift */; };
 		0983411B2A80F053002BC610 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0983411A2A80F053002BC610 /* Assets.xcassets */; };
 		0983411F2A80F053002BC610 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0983411E2A80F053002BC610 /* Preview Assets.xcassets */; };
+		098341282A80F498002BC610 /* ServerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098341272A80F498002BC610 /* ServerConfiguration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,9 @@
 		0983411A2A80F053002BC610 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0983411C2A80F053002BC610 /* AppCircleTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppCircleTest.entitlements; sourceTree = "<group>"; };
 		0983411E2A80F053002BC610 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		098341252A80F2B2002BC610 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		098341262A80F414002BC610 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		098341272A80F498002BC610 /* ServerConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConfiguration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,11 +56,14 @@
 		098341152A80F051002BC610 /* AppCircleTest */ = {
 			isa = PBXGroup;
 			children = (
+				098341262A80F414002BC610 /* Info.plist */,
 				098341162A80F051002BC610 /* AppCircleTestApp.swift */,
 				098341182A80F051002BC610 /* ContentView.swift */,
 				0983411A2A80F053002BC610 /* Assets.xcassets */,
 				0983411C2A80F053002BC610 /* AppCircleTest.entitlements */,
 				0983411D2A80F053002BC610 /* Preview Content */,
+				098341252A80F2B2002BC610 /* Config.xcconfig */,
+				098341272A80F498002BC610 /* ServerConfiguration.swift */,
 			);
 			path = AppCircleTest;
 			sourceTree = "<group>";
@@ -76,6 +83,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 098341222A80F053002BC610 /* Build configuration list for PBXNativeTarget "AppCircleTest" */;
 			buildPhases = (
+				098341292A80F5D3002BC610 /* ShellScript */,
 				0983410F2A80F051002BC610 /* Sources */,
 				098341102A80F051002BC610 /* Frameworks */,
 				098341112A80F051002BC610 /* Resources */,
@@ -134,6 +142,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		098341292A80F5D3002BC610 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"API_URL : ${API_URL}\"\necho \"API_KEY : ${API_KEY}\"\nbash $AC_REPOSITORY_DIR/Appcircle/environment.sh $AC_REPOSITORY_DIR/Appcircle/development.xcconfig\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0983410F2A80F051002BC610 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -141,6 +169,7 @@
 			files = (
 				098341192A80F051002BC610 /* ContentView.swift in Sources */,
 				098341172A80F051002BC610 /* AppCircleTestApp.swift in Sources */,
+				098341282A80F498002BC610 /* ServerConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +178,7 @@
 /* Begin XCBuildConfiguration section */
 		098341202A80F053002BC610 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 098341252A80F2B2002BC610 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -197,6 +227,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -207,6 +238,7 @@
 		};
 		098341212A80F053002BC610 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 098341252A80F2B2002BC610 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -249,6 +281,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -267,6 +300,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"AppCircleTest/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AppCircleTest/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -285,7 +319,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.myorganization.AppCircleTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -303,6 +339,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"AppCircleTest/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AppCircleTest/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -321,7 +358,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.myorganization.AppCircleTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
